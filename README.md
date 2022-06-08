@@ -29,8 +29,8 @@ So that I can search for event locations quicker and easier
 #### - **Scenario 1: An event element is collapsed by default**
 
 As a user <br/>
-I should be able to observe that an element has more details <br/>
-So that I can choose to click on those details
+I should be able to see a list of events by name <br/>
+So I can browse through them quickly without having to view the details for each one
 
 #### - **Scenario 2: User can expand an event to see its details**
 
@@ -42,7 +42,7 @@ So that I can view the details
 
 As a user <br/>
 I should be able to click a button to hide the event details <br/>
-So I can continue to browse for other events
+So that I can hide those details
 
 
 ### Feature 3: Specify Number Of Events
