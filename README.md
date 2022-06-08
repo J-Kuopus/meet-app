@@ -10,9 +10,9 @@ A user can type in an event location and the app will search for all upcoming ev
 ### Feature 1: Filter Events By City
 
 #### - **Scenario 1:** When user hasn’t searched for a city, show upcoming events from all cities.
-As a user
-I should be able to see a list of upcoming events from all cities
-So that I can see the list of events that take place in that city
+As a user <br/>
+I should be able to see a list of upcoming events from all cities <br/>
+So that I can see the list of events that take place in that city <br/>
 
 #### - **Scenario 2:** User should see a list of suggestions when they search for a city.
 As a user
