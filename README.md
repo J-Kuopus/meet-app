@@ -86,53 +86,70 @@ So that I can immediately get an idea of the number of events in each city
 
 ## Gherkin Syntax:
 
+### Feature 1: Filter Events By City
+
+#### - **Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities.**
+Given that the app is in its default state <br/>
+When the user hasn't searched for anything yet <br/>
+Then the app should list upcoming events from all cities
+
+#### - **Scenario 2: User should see a list of suggestions when they search for a city.**
+Given that a search parameter is being typed in <br/>
+When the user types in the city <br/>
+Then the app should make a list of suggestions to match that city
+
+#### - **Scenario 3: User can select a city from the suggested list.**
+Given that a search parameter has been typed in and the app has suggested a list of matches <br/>
+When the user sees the list of suggestions <br/>
+Then the user should be able to select a city from the list
+
 ### Feature 2: Show/Hide An Element
 
 #### - **Scenario 1: An event element is collapsed by default**
-Given that the user hasn't opened the event details <br/>
-When the user views an event listing <br/>
-Then the user should be able to see that the event has more details that they can click on
+Given that the events for a location are listed <br/>
+When the user doesn't click on anything <br/>
+Then the details for an event are collapsed
 
 #### - **Scenario 2: User can expand an event to see its details**
-Given that the user hasn't opened the event details <br/>
-When the user clicks on a button <br/>
-Then the user can expand the event details to view them
+Given that the events for a location are listed <br/>
+When the user clicks on a specific event <br/>
+Then the details for that event are expanded
 
 #### - **Scenario 3: User can collapse an event to hide its details**
-Given that the user has already opened the event details <br/>
-When the user clicks on a button <br/>
-Then the user should be able to close the event details to keep browsing other events
+Given that the details for an event are already expanded <br/>
+When the user clicks on a 'hide details' button <br/>
+Then the event details should be collapsed
 
 
 ### Feature 3: Specify Number Of Events
 
 #### - **Scenario 1: When user hasn't specified a number, 32 is the default number**
-Given that the user has already typed in an event location <br/>
-When the user enters the event location <br/>
-Then the user should see that the default number of listed events is 32
+Given that a location has been entered <br/>
+When the user doesn't click on anything <br/>
+Then the default number of events for that location should be 32
 
 #### - **Scenario 2: User can change the number of events they want to see**
-Given that the user has already entered an event location <br/>
-When the user sees that the default number of listed events is 32 <br/>
+Given that a location has been entered and the default number of events is shown <br/>
+When the user clicks on the default number of events <br/>
 Then the user should be able to change that number to suit their needs
 
 
 ### Feature 4: Use The App When Offline
 
 #### - **Scenario 1: Show cached data when there's no internet connection**
-Given that the user has previously used the app <br/>
-When the user reopens the application offline <br/>
-Then the user should be able to view their cached browsing data
+Given that app has already been used and is reopened <br/>
+When the user makes no action <br/>
+Then the cached data from the last session should be displayed
 
 #### - **Scenario 2: Show error when user changes the settings (city, time range)**
-Given that the user has already browsed for event listings <br/>
+Given that a location and its events are listed <br/>
 When the user tries to change the settings <br/>
-Then the user should be able to see an error message that the settings don't correspond with the listed events
+Then an error message should be displayed
 
 
 ### Feature 5: Data Visualization
 
 #### - **Scenario 1: Show a chart with the number of upcoming events in each city**
-Given that the user has already typed in an event location <br/>
-When the user enters the event location <br/>
-Then the user should be able to view a chart with the number of upcoming events in the location
+Given that an event location has already been entered <br/>
+When the user makes no action <br/>
+Then a chart with the number of upcoming events in that location should be displayed
