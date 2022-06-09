@@ -129,7 +129,7 @@ When the user searches for an event location <br/>
 Then the default number of events listed for that location should be 32
 
 #### - **Scenario 2: User can change the number of events they want to see**
-Given that the default number of events listed hasn't been altered <br/>
+Given that the default number of events are listed <br/>
 When the user clicks on the default number of events <br/>
 Then the user should be able to change that number to suit their needs
 
