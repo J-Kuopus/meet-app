@@ -124,12 +124,12 @@ Then the event details should be collapsed
 ### Feature 3: Specify Number Of Events
 
 #### - **Scenario 1: When user hasn't specified a number, 32 is the default number**
-Given that a location has been entered <br/>
-When the user doesn't click on anything <br/>
-Then the default number of events for that location should be 32
+Given that the user has not specified the number of events they want to see <br/>
+When the user searches for an event location <br/>
+Then the default number of events listed for that location should be 32
 
 #### - **Scenario 2: User can change the number of events they want to see**
-Given that a location has been entered and the default number of events is shown <br/>
+Given that the default number of events are listed <br/>
 When the user clicks on the default number of events <br/>
 Then the user should be able to change that number to suit their needs
 
