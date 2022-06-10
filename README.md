@@ -124,14 +124,14 @@ Then the event details should be collapsed
 ### Feature 3: Specify Number Of Events
 
 #### - **Scenario 1: When user hasn't specified a number, 32 is the default number**
-Given that the user has not specified the number of events they want to see <br/>
-When the user searches for an event location <br/>
+Given that a list of events for a location are displayed <br/>
+When the user hasn't specified a number of events <br/>
 Then the default number of events listed for that location should be 32
 
 #### - **Scenario 2: User can change the number of events they want to see**
 Given that the default number of events are listed <br/>
-When the user clicks on the default number of events <br/>
-Then the user should be able to change that number to suit their needs
+When the user inserts a number into the 'number of events' field <br/>
+Then the number of events displayed should match the number that was inserted
 
 
 ### Feature 4: Use The App When Offline
