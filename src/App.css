@@ -1,7 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
 .App {
   text-align: center;
   padding: 2% 5%;
+  color:#494949;
+  background-color: #c6d3e5;
 }
 
 .App * {
@@ -80,7 +83,7 @@ input[type="number"] {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
   text-align: left;
-  border: 1px solid #ccc;
+  border: 5px solid #7092be;
   border-radius: 4px;
   position: relative;
 }
