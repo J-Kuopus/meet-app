@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
   state = {
