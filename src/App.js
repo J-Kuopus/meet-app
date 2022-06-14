@@ -5,7 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
   state = {
@@ -47,9 +47,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents}/>
-        <EventList events={this.state.events}/>
+        <Container>
+          <Row>
+            <Col>
+              <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+              <NumberOfEvents numberOfEvents={this.state.numberOfEvents}/>
+              <EventList events={this.state.events}/>
+           </Col>
+          </Row>
+        </Container>
       </div>
     );
   }
