@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { mockData } from './mock-data';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 
 class Event extends Component {
   state = {
@@ -27,9 +28,9 @@ class Event extends Component {
           {event.start.dateTime} {event.start.timeZone}
         </p>
         <p className="location">{event.location}</p>
-        <button className="btn-details" onClick={this.handleClick}>
+        <Button variant="primary" className="btn-details" onClick={this.handleClick}>
           show details
-        </button>
+        </Button>
         <div className="event-details">{this.showSummary()}</div>
       </div>
     );
