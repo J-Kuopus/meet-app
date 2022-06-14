@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { mockData } from './mock-data';
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
 
 class Event extends Component {
   state = {
