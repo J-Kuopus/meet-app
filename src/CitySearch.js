@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form } from 'react-bootstrap';
 
 class CitySearch extends Component {
 
@@ -31,13 +32,15 @@ class CitySearch extends Component {
     render() {
       return (
         <div className="CitySearch">
-          <input
+          <Form>
+          <Form.Control
             type="text"
             className="city"
             value={this.state.query}
             onChange={this.handleInputChanged}
             onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
+          </Form>
          <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none'}}>
            {this.state.suggestions.map((suggestion) => (
              <li 
