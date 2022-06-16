@@ -53,9 +53,28 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const AppNumberOfEventsState = AppWrapper.state("numberOfEvents");
     expect(AppNumberOfEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(EventList).props().numberOfEvents).toEqual(32);
+    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
     AppWrapper.unmount();
 });
+
+test("input change in NumberOfEvents updates the events state in App component", async () => {
+  const AppWrapper = mount(<App />);
+  const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+  const selectedCity = "London, UK";
+  const selectedNumber = 1;
+  await NumberOfEventsWrapper.instance().handleInputChanged({
+    target: { value: selectedNumber },
+  });
+  const eventsToShow = mockData
+    .filter((e) => e.location === selectedCity)
+    .slice(0, selectedNumber);
+  AppWrapper.setState({ events: eventsToShow });
+  expect(AppWrapper.state("events")).toEqual(eventsToShow);
+  expect(AppWrapper.state("events")).not.toEqual(undefined);
+  expect(AppWrapper.state("events")).toHaveLength(selectedNumber);
+  AppWrapper.unmount();
+});
+
 });
 
 describe('<App /> component', () => {
