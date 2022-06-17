@@ -5,20 +5,23 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
-import { Container, Row, Col } from 'react-bootstrap';
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     numberOfEvents: 32,
-  }
+    location: "all",
+  };
 
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events),
+        });
       }
     });
   }
@@ -26,40 +29,40 @@ class App extends Component {
   componentWillUnmount(){
     this.mounted = false;
   }
-  
 
-  updateEvents = (location, eventCount) => {
+  updateEvents = (location, eventCount = this.state.numberOfEvents) => {
+    this.mounted = true;
     getEvents().then((events) => {
       const locationEvents =
-        location === "all"
-          ? events
-          : events.filter((event) => event.location === location);
+        location === "all" ? events : events.filter((event) => event.location === location);
+      const eventNumberFilter =
+        eventCount > locationEvents.length ? locationEvents : locationEvents.slice(0, eventCount);
       if (this.mounted) {
         this.setState({
-          events: locationEvents.slice(0, eventCount),
-          currentLocation: location,
-          numberOfEvents: eventCount,
+          events: eventNumberFilter,
         });
       }
     });
   };
 
+  updateEventNumbers = (eventNumbers) => {
+    this.setState({
+      numberOfEvents: eventNumbers,
+    });
+    this.updateEvents(this.state.location, eventNumbers);
+  };
+
   render() {
     return (
       <div className="App">
-        <Container>
-          <Row>
-            <Col>
               <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
               <br/>
-              <NumberOfEvents numberOfEvents={this.state.numberOfEvents}/>
+              <NumberOfEvents updateEventNumbers={this.updateEventNumbers}/>
               <EventList events={this.state.events}/>
-           </Col>
-          </Row>
-        </Container>
       </div>
     );
   }
 }
 
 export default App;
+
