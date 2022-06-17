@@ -32,8 +32,7 @@ class CitySearch extends Component {
     render() {
       return (
         <div className="CitySearch">
-          <Form>
-          <Form.Control
+          <input
             type="text"
             className="city"
             placeholder="Enter city name"
@@ -41,7 +40,6 @@ class CitySearch extends Component {
             onChange={this.handleInputChanged}
             onFocus={() => { this.setState({ showSuggestions: true }) }}
           />
-          </Form>
          <ul className="suggestions" style={this.state.showSuggestions ? {}: { display: 'none'}}>
            {this.state.suggestions.map((suggestion) => (
              <li 
