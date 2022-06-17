@@ -18,16 +18,14 @@ class NumberOfEvents extends Component {
 
   render() {
     return (
-      <div>
-        <Form>
-        <Form.Label>Number of Events: </Form.Label>
-        <Form.Control
+      <div className="numberOfEvents">
+        <label>Number of Events: </label>
+        <input
           type="text"
           id="events-number"
           value={this.state.numberOfEvents}
           onChange={this.handleInputChanged}
         />
-        </Form>
       </div>
     );
   }
