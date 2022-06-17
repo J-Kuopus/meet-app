@@ -8,7 +8,7 @@ import { mockData } from '../mock-data';
 import { extractLocations, getEvents } from '../api';
 
 describe('<App /> integration', () => {
-  
+  // Integration Tests
   test('App passes "events" state as a prop to EventList', () => {
     const AppWrapper = mount(<App />);
     const AppEventsState = AppWrapper.state('events');
@@ -49,15 +49,62 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  test('passing number of events', () => {
-    const AppWrapper = mount(<App />);
-    const AppNumberOfEventsState = AppWrapper.state("numberOfEvents");
-    expect(AppNumberOfEventsState).not.toEqual(undefined);
-    expect(AppWrapper.find(NumberOfEvents).props().numberOfEvents).toEqual(32);
+  // Integration tests for Number Of Events
+  test("the default value of number of events is 32", () => {
+    let AppWrapper = mount(<App />);
+    expect(AppWrapper.state("numberOfEvents")).toBe(32);
     AppWrapper.unmount();
-});
+  });
+
+  test("input change in NumberOfEvents updates the events state in App component", async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const selectedCity = "London, UK";
+    const selectedNumber = 1;
+    await NumberOfEventsWrapper.instance().handleInputChanged({
+      target: { value: selectedNumber },
+    });
+    const eventsToShow = mockData
+      .filter((e) => e.location === selectedCity)
+      .slice(0, selectedNumber);
+    AppWrapper.setState({ events: eventsToShow });
+    expect(AppWrapper.state("events")).toEqual(eventsToShow);
+    expect(AppWrapper.state("events")).not.toEqual(undefined);
+    expect(AppWrapper.state("events")).toHaveLength(selectedNumber);
+    AppWrapper.unmount();
+  });
+
+
+  test("if user enters number larger than number of available events", async () => {
+    let AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 5 } };
+    NumberOfEventsWrapper.find("#events-number").at(0).simulate("change", eventObject);
+    await getEvents();
+    AppWrapper.update();
+    const EventListWrapper = AppWrapper.find(EventList);
+    expect(AppWrapper.state("events")).toHaveLength(2);
+    expect(EventListWrapper.props().events).toHaveLength(2);
+    AppWrapper.unmount();
+  });
+
+  test("if user enters number lower than number of available events", async () => {
+    let AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 1 } };
+    NumberOfEventsWrapper.find("#events-number").simulate("change", eventObject);
+    await getEvents();
+    AppWrapper.update();
+    const EventListWrapper = AppWrapper.find(EventList);
+    expect(AppWrapper.state("events")).toHaveLength(2);
+    expect(EventListWrapper.props().events).toHaveLength(2);
+    AppWrapper.unmount();
+  });
+
+
 });
 
+// Component Tests
 describe('<App /> component', () => {
   let AppWrapper;
   beforeAll(() => {
