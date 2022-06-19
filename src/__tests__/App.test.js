@@ -50,13 +50,13 @@ describe('<App /> integration', () => {
   });
 
   // Integration tests for Number Of Events
-  test("the default value of number of events is 32", () => {
-    let AppWrapper = mount(<App />);
-    expect(AppWrapper.state("numberOfEvents")).toBe(32);
+  test('the default value of number of events is 32', async () => {
+    const AppWrapper = mount(<App />);
+    expect(AppWrapper.state('numberOfEvents')).toBe(32);
     AppWrapper.unmount();
   });
 
-  test("input change in NumberOfEvents updates the events state in App component", async () => {
+  /* test("input change in NumberOfEvents updates the events state in App component", async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const selectedCity = "London, UK";
@@ -71,6 +71,15 @@ describe('<App /> integration', () => {
     expect(AppWrapper.state("events")).toEqual(eventsToShow);
     expect(AppWrapper.state("events")).not.toEqual(undefined);
     expect(AppWrapper.state("events")).toHaveLength(selectedNumber);
+    AppWrapper.unmount();
+  }); */
+
+  test("the state of number of events shall be updated, when the number input changes", () => {
+    let AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 12 } };
+    NumberOfEventsWrapper.find("#events-number").at(0).simulate("change", eventObject);
+    expect(AppWrapper.state("numberOfEvents")).toBe(12);
     AppWrapper.unmount();
   });
 
@@ -96,8 +105,8 @@ describe('<App /> integration', () => {
     await getEvents();
     AppWrapper.update();
     const EventListWrapper = AppWrapper.find(EventList);
-    expect(AppWrapper.state("events")).toHaveLength(2);
-    expect(EventListWrapper.props().events).toHaveLength(2);
+    expect(AppWrapper.state("events")).toHaveLength(1);
+    expect(EventListWrapper.props().events).toHaveLength(1);
     AppWrapper.unmount();
   });
 
