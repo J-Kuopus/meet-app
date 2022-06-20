@@ -19,7 +19,7 @@ defineFeature(feature, test => {
         });
 
         then('the details for an event are collapsed', () => {
-            expect(AppWrapper.find('.event')).toHaveLength(0);
+            expect(AppWrapper.find('.event-details')).toHaveLength(0);
         });
     });
 
@@ -36,21 +36,25 @@ defineFeature(feature, test => {
         });
 
         then('the details for that event are expanded', () => {
-            expect(AppWrapper.find('.event')).toHaveLength(1);
+            expect(AppWrapper.find('.event-details')).toHaveLength(1);
         });
     });
 
     test('User can collapse an event to hide its details', ({ given, when, then }) => {
-        given('that the details for an event are already expanded', () => {
-
-        });
+        let AppWrapper;
+        given('that the details for an event are already expanded', async () => {
+            AppWrapper = await mount(<App />);
+            AppWrapper.update();
+            AppWrapper.find('.btn-details').at(0).simulate('click');
+            expect(AppWrapper.find('event-details')).toHaveLength(1);
+    });
 
         when('the user clicks on a \'hide details\' button', () => {
-
+            AppWrapper.find('.btn-details').at(0).simulate('click');
         });
 
         then('the event details should be collapsed', () => {
-
+            expect(AppWrapper.find('.event-details')).toHaveLength(0);
         });
     });
 
