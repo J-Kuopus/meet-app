@@ -45,20 +45,22 @@ class App extends Component {
     });
   };
 
-  updateEventNumbers = (eventNumbers) => {
+  updateEventNumbers = (numberOfEvents) => {
     this.setState({
-      numberOfEvents: eventNumbers,
-    });
-    this.updateEvents(this.state.location, eventNumbers);
+      numberOfEvents,
+    },
+    this.updateEvents(this.state.location, numberOfEvents)
+    );
   };
 
   render() {
+    const { events, locations, numberOfEvents } = this.state;
     return (
       <div className="App">
-              <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+              <CitySearch locations={locations} updateEvents={this.updateEvents}/>
               <br/>
-              <NumberOfEvents updateEventNumbers={this.updateEventNumbers}/>
-              <EventList events={this.state.events}/>
+              <NumberOfEvents numberOfEvents={numberOfEvents} updateEventNumbers={this.updateEventNumbers}/>
+              <EventList events={events}/>
       </div>
     );
   }
