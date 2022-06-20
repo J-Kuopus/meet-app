@@ -74,7 +74,7 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   }); */
 
-  test("the state of number of events shall be updated, when the number input changes", () => {
+  test("the state of NumberOfEvents is updated, when input number is changed", () => {
     let AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const eventObject = { target: { value: 12 } };
