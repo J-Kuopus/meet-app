@@ -1,4 +1,4 @@
-let mockData = [
+const mockData = JSON.parse(JSON.stringify([
     {
       "kind": "calendar#event",
       "etag": "\"3181161784712000\"",
@@ -78,8 +78,6 @@ let mockData = [
         },
         "eventType": "default"
        }
-];
-
-mockData = JSON.parse(JSON.stringify(mockData));
+]));
 
 export { mockData };
