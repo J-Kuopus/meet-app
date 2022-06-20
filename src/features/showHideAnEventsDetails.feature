@@ -2,7 +2,7 @@ Feature: Show/Hide Event Details
 
 Scenario: An event element is collapsed by default
 Given that the events for a location are listed
-When the user doesn't click on anything
+When the user does not click on anything
 Then the details for an event are collapsed
 
 Scenario: User can expand an event to see its details
