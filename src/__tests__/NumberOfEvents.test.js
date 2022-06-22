@@ -8,22 +8,22 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
 
-  test('render number of events input', () => {
+  test('if number of events input is rendered', () => {
     expect(NumberOfEventsWrapper.find('#events-number')).toHaveLength(1);
   });
 
-  test('number of events displayed is 32 by default', () => {
+  test('if default number of events loaded is 32', () => {
     expect(NumberOfEventsWrapper.find('#events-number').get(0).props.value).toEqual(32);
   });
 
-  test('if user enters number lower than number of available events', () => {
+  test('if user enters number less than 1', () => {
     NumberOfEventsWrapper.setState({ numberOfEvents: 32 });
     NumberOfEventsWrapper.find('#events-number').simulate('change', {target: { value: -1 },
     });
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toEqual(32);
   });
 
-  test('user can change the number of events to display', () => {
+  test('if user can change the amount of events loaded', () => {
     NumberOfEventsWrapper.find('#events-number').simulate('change', {target: { value: 10 },
     });
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toEqual(10);
