@@ -84,7 +84,7 @@ describe('<App /> integration', () => {
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
     const eventObject = { target: { value: 0 } };
     NumberOfEventsWrapper.find('#events-number').simulate('change', eventObject);
-    await getEvents();
+    /* await getEvents(); */
     AppWrapper.update();
     const EventListWrapper = AppWrapper.find(EventList);
     expect(AppWrapper.state('events')).toHaveLength(mockData.length);
