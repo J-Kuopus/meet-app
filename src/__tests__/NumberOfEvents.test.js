@@ -16,14 +16,14 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('#events-number').get(0).props.value).toEqual(32);
   });
 
-  test('if user enters number less than 1', () => {
+  test('value of numberOfEvents state does not change when inserted number is less than 1', () => {
     NumberOfEventsWrapper.setState({ numberOfEvents: 32 });
     NumberOfEventsWrapper.find('#events-number').simulate('change', {target: { value: -1 },
     });
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toEqual(32);
   });
 
-  test('if user can change the amount of events loaded', () => {
+  test('value of numberOfEvents state changes when text input changes', () => {
     NumberOfEventsWrapper.find('#events-number').simulate('change', {target: { value: 10 },
     });
     expect(NumberOfEventsWrapper.state('numberOfEvents')).toEqual(10);
