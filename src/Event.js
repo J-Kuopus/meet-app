@@ -3,20 +3,16 @@ import { mockData } from './mock-data';
 
 class Event extends Component {
   state = {
-    collapsed: true,
+    showDetails: false,
   };
 
-  handleClick = () => {
-    this.state.collapsed
-      ? this.setState({ collapsed: false })
-      : this.setState({ collapsed: true });
-  };
+  handleShowDetails = () => {
+    this.setState({ showDetails: true })
+  }
 
-  showSummary = () => {
-    if (this.state.collapsed === false) {
-      return mockData[0].description;
-    }
-  };
+  handleHideDetails = () => {
+    this.setState({ showDetails: false })
+  }
 
   render() {
     const { event } = this.props;
@@ -29,10 +25,11 @@ class Event extends Component {
         </p>
         <p className="location">{event.location}</p>
         <br/>
-        <button className="btn-details" onClick={this.handleClick}>
-          details
-        </button>
-        <div className="event-details">{this.showSummary()}</div>
+        {!this.state.showDetails && <button className="btn-details" onClick={this.handleShowDetails}>
+          show details
+        </button>}
+        {this.state.showDetails && <p className="event-details">{this.props.event.description}</p>}
+        {this.state.showDetails && <button className="btn-details-hide" onClick={this.handleHideDetails}>hide details</button>}
       </div>
     );
   }
