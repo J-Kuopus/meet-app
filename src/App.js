@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -54,7 +54,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+    <Fragment>
+      <div className="Header">
         <h1>Meet App</h1>
         <br/>
         <br/>
@@ -62,8 +63,11 @@ class App extends Component {
         <br/>
         <NumberOfEvents updateEventNumbers={this.updateEventNumbers}/>
         <br/>
+      </div>
+      <div className="App">
         <EventList events={this.state.events}/>
       </div>
+    </Fragment>
     );
   }
 }
