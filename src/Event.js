@@ -30,7 +30,7 @@ class Event extends Component {
         <p className="location">{event.location}</p>
         <br/>
         <button className="btn-details" onClick={this.handleClick}>
-          show details
+          details
         </button>
         <div className="event-details">{this.showSummary()}</div>
       </div>
