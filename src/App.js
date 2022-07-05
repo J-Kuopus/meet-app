@@ -45,14 +45,17 @@ class App extends Component {
     });
   };
 
+
   updateEventNumbers = (eventNumbers) => {
     this.setState({
       numberOfEvents: eventNumbers,
     });
     this.updateEvents(this.state.location, eventNumbers);
+
   };
 
   render() {
+    const { events, locations, numberOfEvents } = this.state;
     return (
     <Fragment>
       <div className="Header">
@@ -65,7 +68,7 @@ class App extends Component {
         <br/>
       </div>
       <div className="App">
-        <EventList events={this.state.events}/>
+      <EventList events={this.state.events}/>
       </div>
     </Fragment>
     );
