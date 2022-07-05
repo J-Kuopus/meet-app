@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ErrorAlert } from './Alert';
 
+
 class NumberOfEvents extends Component {
   state = {
     errorText: ''
@@ -15,6 +16,7 @@ class NumberOfEvents extends Component {
       } else {
           console.log('Please enter a valid number.');
       }
+
   }; */
 
   handleInputChanged = event => {
@@ -31,6 +33,8 @@ class NumberOfEvents extends Component {
       })
     };
   }
+
+
 
   render() {
     return (
