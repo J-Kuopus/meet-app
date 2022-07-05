@@ -12,6 +12,14 @@
   box-sizing: border-box;
 }
 
+.Header {
+  text-align: center;
+  padding: 2% 5%;
+  color: #2b2b2b;
+  background-color: #e2e9f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -109,7 +117,8 @@ input[type="number"] {
   border: 3px solid #7092be;
 }
 
-.btn-details {
+.btn-details,
+.btn-details-hide {
   position: absolute;
   right: 5px;
   bottom: 5px;
@@ -154,7 +163,9 @@ input[type="number"] {
 
 .Alert {
   position: fixed;
-  top: 20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 10;
 }
 
 .data-vis-wrapper {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
@@ -45,25 +45,35 @@ class App extends Component {
     });
   };
 
-  updateEventNumbers = (numberOfEvents) => {
+
+  updateEventNumbers = (eventNumbers) => {
     this.setState({
-      numberOfEvents,
-    },
-    this.updateEvents(this.state.location, numberOfEvents)
-    );
+      numberOfEvents: eventNumbers,
+    });
+    this.updateEvents(this.state.location, eventNumbers);
+
   };
 
   render() {
     const { events, locations, numberOfEvents } = this.state;
     return (
-      <div className="App">
-              <CitySearch locations={locations} updateEvents={this.updateEvents}/>
-              <br/>
-              <NumberOfEvents numberOfEvents={numberOfEvents} updateEventNumbers={this.updateEventNumbers}/>
-              <EventList events={events}/>
+    <Fragment>
+      <div className="Header">
+        <h1>Meet App</h1>
+        <br/>
+        <br/>
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
+        <br/>
+        <NumberOfEvents updateEventNumbers={this.updateEventNumbers}/>
+        <br/>
       </div>
+      <div className="App">
+      <EventList events={this.state.events}/>
+      </div>
+    </Fragment>
     );
   }
 }
 
 export default App;
+
