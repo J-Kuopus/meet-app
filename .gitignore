@@ -19,3 +19,6 @@ build/static/js/main.d26af17f.js.LICENSE.txt
 build/static/js/main.d26af17f.js.map
 build/asset-manifest.json
 build/index.html
+build/asset-manifest.json
+build/index.html
+build/service-worker.js
