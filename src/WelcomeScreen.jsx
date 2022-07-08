@@ -29,6 +29,8 @@ function WelcomeScreen(props) {
     </button>
   </div>
   </div>
+  <br/>
+  <br/>
   <a
      href="https://j-kuopus.github.io/meet-app/privacy.html"
      rel="nofollow noopener"
