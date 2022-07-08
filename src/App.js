@@ -100,9 +100,9 @@ class App extends Component {
       <div className="App">
         <OfflineAlert text={offlineText} />
         <EventList events={this.state.events}/>
+      </div>
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
                        getAccessToken={() => { getAccessToken() }} />
-      </div>
     </Fragment>
     );
   }
