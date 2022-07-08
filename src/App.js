@@ -3,7 +3,8 @@ import './App.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api';
+import WelcomeScreen from './WelcomeScreen';
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import { OfflineAlert } from './Alert';
 
@@ -13,26 +14,42 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     location: "all",
+    offlineText: '',
+    showWelcomeScreen: undefined,
   };
 
   async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
-     } if (!navigator.onLine) {
-        this.setState({
-          offlineText: "No Internet Connection!",
-        });
-      } else {
-        this.setState({
-          offlineText: '',
+    if (navigator.onLine && !window.location.href.startsWith('http://localhost')) {
+      const accessToken = localStorage.getItem('access_token');
+      const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+      const searchParams = new URLSearchParams(window.location.search);
+      const code = searchParams.get("code");
+
+      this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+      if ((code || isTokenValid) && this.mounted) {
+        getEvents().then((events) => {
+          if (this.mounted) {
+            this.setState({
+              events,
+              locations: extractLocations(events),
+              offlineText: ''
+            });
+          }
         });
       }
-    });
+    } else {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events,
+            locations: extractLocations(events),
+            offlineText: 'No internet connection. Event list may not be up to date',
+            showWelcomeScreen: false
+          });
+        }
+      });
+    }
   }
 
   componentWillUnmount(){
@@ -64,12 +81,15 @@ class App extends Component {
   };
 
   render() {
+    if (this.state.showWelcomeScreen === undefined) 
+    return <div className="App" />
+
     const { events, locations, numberOfEvents, offlineText } = this.state;
+
     return (
     <Fragment>
       <div className="Header">
         <h1>Meet App</h1>
-        <OfflineAlert text={offlineText} />
         <br/>
         <br/>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
@@ -78,7 +98,10 @@ class App extends Component {
         <br/>
       </div>
       <div className="App">
-      <EventList events={this.state.events}/>
+        <OfflineAlert text={offlineText} />
+        <EventList events={this.state.events}/>
+        <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
+                       getAccessToken={() => { getAccessToken() }} />
       </div>
     </Fragment>
     );
