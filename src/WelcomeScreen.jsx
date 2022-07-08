@@ -30,7 +30,7 @@ function WelcomeScreen(props) {
   </div>
   </div>
   <a
-     href="https://j-kuopus.github.io/meet/privacy.html"
+     href="https://j-kuopus.github.io/meet-app/privacy.html"
      rel="nofollow noopener"
   >
    Privacy policy
