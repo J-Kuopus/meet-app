@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
+import { OfflineAlert } from './Alert';
 
 class App extends Component {
   state = {
@@ -21,6 +22,14 @@ class App extends Component {
         this.setState({
           events: events.slice(0, this.state.numberOfEvents),
           locations: extractLocations(events),
+        });
+      }  if (!navigator.onLine) {
+        this.setState({
+          offlineText: "No Internet Connection! Data is loaded from cache.",
+        });
+      } else {
+        this.setState({
+          offlineText: '',
         });
       }
     });
@@ -55,11 +64,12 @@ class App extends Component {
   };
 
   render() {
-    const { events, locations, numberOfEvents } = this.state;
+    const { events, locations, numberOfEvents, offlineText } = this.state;
     return (
     <Fragment>
       <div className="Header">
         <h1>Meet App</h1>
+        <OfflineAlert text={offlineText} />
         <br/>
         <br/>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents}/>
