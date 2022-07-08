@@ -15,7 +15,7 @@ class App extends Component {
     location: "all",
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
@@ -25,7 +25,7 @@ class App extends Component {
         });
      } if (!navigator.onLine) {
         this.setState({
-          offlineText: "No Internet Connection! Data is loaded from cache.",
+          offlineText: "No Internet Connection!",
         });
       } else {
         this.setState({
