@@ -13,7 +13,6 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     location: "all",
-    offlineText: '',
   };
 
   async componentDidMount() {
@@ -28,11 +27,11 @@ class App extends Component {
         this.setState({
           offlineText: "No Internet Connection!",
         });
-      } /* else {
+      } else {
         this.setState({
           offlineText: '',
         });
-      } */
+      }
     });
   }
 
