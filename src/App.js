@@ -104,6 +104,7 @@ class App extends Component {
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
                        getAccessToken={() => { getAccessToken() }} />
     </Fragment>
+    
     );
   }
 }
