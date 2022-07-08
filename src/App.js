@@ -23,15 +23,15 @@ class App extends Component {
           events: events.slice(0, this.state.numberOfEvents),
           locations: extractLocations(events),
         });
-      }  if (!navigator.onLine) {
+     } if (!navigator.onLine) {
         this.setState({
           offlineText: "No Internet Connection! Data is loaded from cache.",
         });
-      } else {
+      } /* else {
         this.setState({
           offlineText: '',
         });
-      }
+      } */
     });
   }
 
