@@ -27,11 +27,11 @@ class App extends Component {
         this.setState({
           offlineText: "No Internet Connection! Data is loaded from cache.",
         });
-      } /* else {
+      } else {
         this.setState({
           offlineText: '',
         });
-      } */
+      }
     });
   }
 
