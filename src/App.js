@@ -7,6 +7,10 @@ import WelcomeScreen from './WelcomeScreen';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
 import './nprogress.css';
 import { OfflineAlert } from './Alert';
+// Rechart components
+import {
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip
+} from 'recharts';
 
 class App extends Component {
   state = {
@@ -80,6 +84,16 @@ class App extends Component {
 
   };
 
+  getData = () => {
+    const {locations, events} = this.state;
+    const data = locations.map((location)=>{
+      const number = events.filter((event) => event.location === location).length
+      const city = location.split(', ').shift()
+      return {city, number};
+    })
+    return data;
+  };
+
   render() {
     if (this.state.showWelcomeScreen === undefined) 
     return <div className="App" />
@@ -99,6 +113,14 @@ class App extends Component {
       </div>
       <div className="App">
         <OfflineAlert text={offlineText} />
+        <ScatterChart width={730} height={250}
+          margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis type="category" dataKey="city" name="city" />
+          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+          <Scatter data={this.getData()} fill="#8884d8" />
+        </ScatterChart>
         <EventList events={this.state.events}/>
       </div>
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
