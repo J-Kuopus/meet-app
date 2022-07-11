@@ -113,7 +113,7 @@ class App extends Component {
       </div>
       <div className="App">
         <OfflineAlert text={offlineText} />
-        <ScatterChart width={730} height={250}
+        <ScatterChart width={800} height={250}
           margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="category" dataKey="city" name="city" />
