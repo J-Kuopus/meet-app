@@ -181,7 +181,7 @@ input[type="number"] {
   overflow: visible;
 }
 
-.login-button {
+/* .login-button {
   color: #494949;
   text-transform: uppercase;
   text-decoration: none;
@@ -232,7 +232,7 @@ input[type="number"] {
   letter-spacing: 0.2px;
   font-family: "Roboto";
 }
-
+ */
 
 
 @media only screen and (min-width: 992px) {
