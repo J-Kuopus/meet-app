@@ -4,20 +4,9 @@ import { ErrorAlert } from './Alert';
 
 class NumberOfEvents extends Component {
   state = {
+    numberOfEvents: 12,
     errorText: ''
   };
-
-  /* handleInputChanged = (event) => {
-    const value = event.target.value;
-      if (value >= 1 && value <= 32) {
-        this.setState({ numberOfEvents: value });
-        if (this.props.updateEventNumbers) 
-          this.props.updateEventNumbers(value);
-      } else {
-          console.log('Please enter a valid number.');
-      }
-
-  }; */
 
   handleInputChanged = event => {
     let value = event.target.value;
