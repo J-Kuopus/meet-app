@@ -3,8 +3,8 @@
 .App {
   text-align: center;
   padding: 2% 5%;
-  color: #2b2b2b;
-  background-color: #e2e9f2;
+  color: #fff;
+  background-color: #000;
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -15,8 +15,8 @@
 .Header {
   text-align: center;
   padding: 2% 5%;
-  color: #2b2b2b;
-  background-color: #e2e9f2;
+  color: #fff;
+  background-color: #000;
   font-family: 'Open Sans', sans-serif;
 }
 
