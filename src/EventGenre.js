@@ -21,7 +21,7 @@ const EventGenre = ({ events }) => {
       setData(() => getData());
     }, [events]);
     return (
-        <ResponsiveContainer height={400} >
+        <ResponsiveContainer height={300} >
             <PieChart width={200} height={200} >
                 <Pie
                     data={data}
