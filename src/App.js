@@ -19,38 +19,25 @@ class App extends Component {
     locations: [],
     numberOfEvents: 32,
     location: "all",
-    offlineText: '',
+    offlineText: "",
     showWelcomeScreen: undefined,
   };
 
   async componentDidMount() {
     this.mounted = true;
-    if (navigator.onLine && !window.location.href.startsWith('http://localhost')) {
-      const accessToken = localStorage.getItem('access_token');
-      const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-      const searchParams = new URLSearchParams(window.location.search);
-      const code = searchParams.get("code");
-
-      this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-      if ((code || isTokenValid) && this.mounted) {
-        getEvents().then((events) => {
-          if (this.mounted) {
-            this.setState({
-              events,
-              locations: extractLocations(events),
-              offlineText: ''
-            });
-          }
-        });
-      }
-    } else {
+    const accessToken = localStorage.getItem('access_token');
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+    this.setState({
+      showWelcomeScreen: !(code || isTokenValid)
+    });
+    if ((code || isTokenValid) && this.mounted) {
       getEvents().then((events) => {
         if (this.mounted) {
           this.setState({
             events,
-            locations: extractLocations(events),
-            offlineText: 'No internet connection. Event list may not be up to date',
-            showWelcomeScreen: false
+            locations: extractLocations(events)
           });
         }
       });
@@ -102,10 +89,12 @@ class App extends Component {
     const { events, locations, numberOfEvents, offlineText } = this.state;
 
     return (
-    <Fragment>
+      <Fragment>
       <div className="Header">
         <h1>Meet App</h1>
         <br/>
+        <br/>
+        <OfflineAlert text={offlineText} />
         <br/>
         <CitySearch locations={locations} updateEvents={this.updateEvents}/>
         <br/>
@@ -114,7 +103,6 @@ class App extends Component {
         <br/>
       </div>
       <div className="App">
-        <OfflineAlert text={offlineText} />
         <div className="data-vis-wrapper">
           <EventGenre events={events} />
           <ResponsiveContainer height={400}>
@@ -132,7 +120,6 @@ class App extends Component {
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
                        getAccessToken={() => { getAccessToken() }} />
     </Fragment>
-    
     );
   }
 }
