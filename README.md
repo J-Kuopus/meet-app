@@ -15,6 +15,11 @@ A user can type in an event location and the app will search for all upcoming ev
 - The app is cross platform. It works on the web as well as on mobile devices and can even be installed as a local app.
 - Works offline. It loads the last events viewed. 
 
+## Tech Stack
+
+- React
+- React-Bootstrap
+
 
 ## User Stories:
 
