@@ -5,6 +5,8 @@ This project is a serverless, progressive web application (PWA) built with React
 
 A user can type in an event location and the app will search for all upcoming events in the location. It will also give the users more details about the events if they choose to click on them. Aside from the list of events there is also a visual chart that represents the amount of upcoming events in the location.
 
+It was made using a test-driven development approach using Enzyme, Jest, Cucumber and Puppeteer. 
+
 ## Key Features
 
 - An input field where users can enter a location name (such as "Berlin, Germany")
