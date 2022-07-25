@@ -13,6 +13,7 @@ Web version:
 ![Meet App Web Image](img/meet-web.jpg?raw=true "Title")
 
 Mobile version:
+<br/>
 ![Meet App Mobile Version](img/meet-mobile.jpg?raw=true "Title")
 
 ## Key Features
