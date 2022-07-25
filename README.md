@@ -7,6 +7,14 @@ A user can type in an event location and the app will search for all upcoming ev
 
 It was made using a test-driven development approach using Enzyme, Jest, Cucumber and Puppeteer. 
 
+## Images
+
+Web version:
+![Meet App Web Image](img/meet-web.jpg?raw=true "Title")
+
+Mobile version:
+![Meet App Mobile Version](img/meet-mobile.jpg?raw=true "Title")
+
 ## Key Features
 
 - An input field where users can enter a location name (such as "Berlin, Germany")
