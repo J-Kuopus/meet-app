@@ -16,6 +16,9 @@ Mobile version:
 <br/>
 ![Meet App Mobile Version](img/meet-mobile.jpg?raw=true "Title")
 
+## Link to live web page:
+https://j-kuopus.github.io/meet-app/
+
 ## Key Features
 
 - An input field where users can enter a location name (such as "Berlin, Germany")
