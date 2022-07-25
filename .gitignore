@@ -1,23 +1,29 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-/auth-server/node_modules
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+node_modules
+coverage
+build
+build/asset-manifest.json
+build/asset-manifest.json
+build/asset-manifest.json
+build/asset-manifest.json
+build/index.html
+build/service-worker.js
+build/static/js/main.282a5909.js
+build/asset-manifest.json
+build/index.html
+build/static/js/main.d26af17f.js.map
+build/static/js/main.d26af17f.js.LICENSE.txt
+build/static/js/main.d26af17f.js
+build/static/js/main.282a5909.js.map
+build/static/js/main.282a5909.js.LICENSE.txt
+build/service-worker.js
+build/static/js/main.d26af17f.js
+build/static/js/main.d26af17f.js.LICENSE.txt
+build/static/js/main.d26af17f.js.map
+build/asset-manifest.json
+build/index.html
+build/asset-manifest.json
+build/index.html
+build/service-worker.js
+build/asset-manifest.json
+build/asset-manifest.json
+build/asset-manifest.json
